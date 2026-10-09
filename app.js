@@ -9,6 +9,7 @@ const detail = document.getElementById("detail");
 const status = document.getElementById("status");
 
 let allPokemon = [];
+let detailRequest = 0;
 
 const idFromUrl = (url) => Number(url.split("/").filter(Boolean).pop());
 
@@ -18,7 +19,7 @@ async function loadList() {
   const data = await res.json();
   allPokemon = data.results.map((p) => ({ name: p.name, id: idFromUrl(p.url) }));
   status.textContent = "";
-  renderList(allPokemon.slice(0, 151));
+  renderList(filter(input.value));
 }
 
 function renderList(list) {
@@ -48,11 +49,13 @@ function filter(query) {
 }
 
 async function showDetail(idOrName) {
+  const request = ++detailRequest;
   status.textContent = "Cargando...";
   try {
     const res = await fetch(`${API}/pokemon/${idOrName}`);
     if (!res.ok) throw new Error();
     const p = await res.json();
+    if (request !== detailRequest) return;
     const img =
       p.sprites.other["official-artwork"].front_default || p.sprites.front_default;
     detail.innerHTML = `
@@ -76,6 +79,7 @@ async function showDetail(idOrName) {
     status.textContent = "";
     detail.scrollIntoView({ behavior: "smooth" });
   } catch {
+    if (request !== detailRequest) return;
     status.textContent = "No se encontró ese Pokémon.";
   }
 }
