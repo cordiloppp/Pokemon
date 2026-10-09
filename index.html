@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pokédex</h1>
+    <form id="search-form" autocomplete="off">
+      <input id="search" type="search" placeholder="Busca por nombre o número (ej. pikachu, 25)" />
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main>
+    <p id="status"></p>
+    <section id="detail" hidden></section>
+    <section id="results"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
