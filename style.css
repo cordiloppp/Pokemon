@@ -1,0 +1,104 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+header {
+  background: #ef4444;
+  color: #fff;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header h1 { margin: 0 0 16px; }
+
+#search-form {
+  display: flex;
+  gap: 8px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+#search {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #fff;
+  cursor: pointer;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+#status { text-align: center; color: #6b7280; }
+
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s;
+}
+
+.card:hover { transform: translateY(-3px); }
+.card img { width: 96px; height: 96px; }
+.card .num { color: #9ca3af; font-size: 13px; }
+.card .name { text-transform: capitalize; font-weight: 600; }
+
+#detail {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#detail[hidden] { display: none; }
+#detail img { width: 200px; height: 200px; }
+#detail h2 { text-transform: capitalize; margin: 0 0 8px; }
+#detail .info { flex: 1; min-width: 220px; }
+
+.type {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 999px;
+  background: #6b7280;
+  color: #fff;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.stat { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 14px; }
+.stat span:first-child { width: 120px; text-transform: capitalize; }
+.bar { flex: 1; height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+.bar div { height: 100%; background: #ef4444; }
